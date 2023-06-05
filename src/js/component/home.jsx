@@ -1,25 +1,27 @@
 import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NavBar from "./NavBar.jsx";
+import Main from "../../pages/Main.jsx";
+import About from "../../pages/About.jsx";
+import Contact from "../../pages/Contact.jsx"
+import Pricing from "../../pages/Pricing.jsx"
+import NotFound from "../../pages/NotFound.jsx"
+import Footer from "./Footer.jsx";
 
 //create your first component
 const Home = () => {
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+		<BrowserRouter>
+			<NavBar />
+			<Routes>
+				<Route path="/" element={<Main />} />
+				<Route path="/about" element={<About />} />
+				<Route path="/contact" element={<Contact />} />
+				<Route path="/pricing" element={<Pricing />} />
+				<Route path='*' element={<NotFound />} />
+			</Routes>
+			<Footer />
+		</BrowserRouter>
 	);
 };
 
